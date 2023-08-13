@@ -34,6 +34,8 @@ namespace Bakery.Controllers
                             .ToArray();
                 model.Add("flavors", flavors);
             }
+
+
             return View(model);
         }
     }
