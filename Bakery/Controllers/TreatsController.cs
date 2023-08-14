@@ -39,7 +39,7 @@ namespace Bakery.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult AddFlavors(int id)
+        public ActionResult AddFlavor(int id)
         {
             Treat thisTreat = _db.Treats.FirstOrDefault(recipes => recipes.TreatId == id);
             ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
@@ -47,7 +47,7 @@ namespace Bakery.Controllers
             
         }
         [HttpPost]
-        public ActionResult AddFlavors(Treat treat, int flavorId)
+        public ActionResult AddFlavor(Treat treat, int flavorId)
         {
 #nullable enable
             TreatFlavor? joinEntity = _db.TreatFlavors.FirstOrDefault(join => (join.FlavorId == flavorId && join.TreatId == treat.TreatId));

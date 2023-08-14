@@ -20,9 +20,6 @@ project.
 - Linq
 - Mvc
 
-## Database Structure
-![Database MySQL page](Factory.png)
-
 ## Complete setup/installation instructions
 - Clone this repository from GitHub
 - Navigate to the HairSalon directory in your terminal and create a new file called appsettings.json
@@ -38,8 +35,8 @@ project.
 ```
 
 - Open MySQL Workbench and use data import/restore to add the database to your system.
-- This will allow you to use the natalie_benjes.sql file.
-- Once this has been set up, navigate to the HairSalon directory and run ```$ dotnet watch run```
+- This will allow you to use the bakery.sql file.
+- Once this has been set up, navigate to the Bakery directory and run ```$ dotnet watch run```
 
 
 ## Known Bugs
