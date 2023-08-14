@@ -1,14 +1,14 @@
-@model Bakery.Models.Flavor
+@model Bakery.Models.Treat
 
-<h2>Edit this Flavor @Html.DisplayFor(model => model.FlavorName)</h2>
+<h2>Edit this Treat @Html.DisplayFor(model => model.TreatName)</h2>
 
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.FlavorId)
     @Html.HiddenFor(model => model.User.Id)
 
-    @Html.LabelFor(model => model.FlavorName)
-    @Html.EditorFor(model => model.FlavorName)
+    @Html.LabelFor(model => model.TreatName)
+    @Html.EditorFor(model => model.TreatName)
 
     <input type="submit" value="Save" />
 }
