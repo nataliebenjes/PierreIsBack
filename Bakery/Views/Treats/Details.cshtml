@@ -1,5 +1,5 @@
 @{
-    Layout = "_Layout";
+  Layout = "_Layout";
 }
 
 @model Bakery.Models.Treat;
@@ -12,20 +12,21 @@
 
 @if (@Model.JoinEntities.Count == 0)
 {
-    <p>There are flavors of this treat right now</p>
+  <p>There are flavors of this treat right now</p>
 }
 else
 {
-    <h4>Flavors that this treat comes in:</h4>
-    <ul>
-    @foreach (TreatFlavor join in Model.JoinEntities)
-        {
-            <li>@join.Flavor.FlavorName</li>
-        }
-    </ul>
+  <h4>Flavors that this treat comes in:</h4>
+  <ul>
+  @foreach (TreatFlavor join in Model.JoinEntities)
+    {
+      <li>@join.Flavor.FlavorName</li>
+    }
+  </ul>
 }
 
-<p>@Html.ActionLink("Back to flavors", "Index")</p>
+<p>@Html.ActionLink("Back to treat list", "Index")</p>
 <p>@Html.ActionLink("Edit Treats", "Edit", new { id = Model.TreatId })</p>
 <p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>
-<p>@Html.ActionLink("Add new flavor", "Create", "Flavors")</p>
+<p>@Html.ActionLink("Add a flavor of this treat", "AddFlavors", new { id = Model.TreatId })</p>
+</div>

@@ -5,15 +5,20 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 
 namespace Bakery.Controllers
 {
     [Authorize]
     public class TreatsController : Controller
     {
+
         private readonly BakeryContext _db;
-        public TreatsController(BakeryContext db)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public TreatsController(UserManager<ApplicationUser> userManager, BakeryContext db)
         {
+            _userManager = userManager;
             _db = db;
         }
         [AllowAnonymous]
@@ -34,14 +39,15 @@ namespace Bakery.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult AddFlavor(int id)
+        public ActionResult AddFlavors(int id)
         {
             Treat thisTreat = _db.Treats.FirstOrDefault(recipes => recipes.TreatId == id);
             ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
             return View(thisTreat);
+            
         }
         [HttpPost]
-        public ActionResult AddFlavor(Treat treat, int flavorId)
+        public ActionResult AddFlavors(Treat treat, int flavorId)
         {
 #nullable enable
             TreatFlavor? joinEntity = _db.TreatFlavors.FirstOrDefault(join => (join.FlavorId == flavorId && join.TreatId == treat.TreatId));
@@ -58,7 +64,7 @@ namespace Bakery.Controllers
             Treat thisTreat = _db.Treats
                                 .Include(treat => treat.JoinEntities)
                                 .ThenInclude(join => join.Flavor)
-                                .FirstOrDefault(flavor => flavor.TreatId == id);
+                                .FirstOrDefault(treat => treat.TreatId == id);
             return View(thisTreat);
         }
         public ActionResult Edit(int id)
