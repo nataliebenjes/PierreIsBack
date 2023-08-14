@@ -5,6 +5,11 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
+
+
+
 
 namespace Bakery.Controllers
 {
@@ -12,10 +17,13 @@ namespace Bakery.Controllers
     public class FlavorsController : Controller
     {
         private readonly BakeryContext _db;
-        public FlavorsController(BakeryContext db)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public FlavorsController(UserManager<ApplicationUser> userManager, BakeryContext db)
         {
+            _userManager = userManager;
             _db = db;
         }
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(_db.Flavors.ToList());
@@ -23,11 +31,12 @@ namespace Bakery.Controllers
         public ActionResult Details(int id)
         {
             Flavor thisFlavor = _db.Flavors
-                .Include(flavor => flavor.JoinEntities)
-                .ThenInclude(join => join.Flavor)
-                .FirstOrDefault(flavor => flavor.FlavorId == id);
+                                .Include(flavor => flavor.JoinEntities)
+                                .ThenInclude(join => join.Treat)
+                                .FirstOrDefault(flavor => flavor.FlavorId == id);
             return View(thisFlavor);
         }
+
         public ActionResult Create()
         {
             return View();
@@ -58,6 +67,33 @@ namespace Bakery.Controllers
                 _db.SaveChanges();
             }
             return RedirectToAction("Details", new { id = flavor.FlavorId });
+        }
+        public ActionResult Edit(int id)
+        {
+            Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.FlavorId == id);
+            return View(thisFlavor);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Flavor flavor)
+        {
+            _db.Flavors.Update(flavor);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+            Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+            return View(thisFlavor);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmation(int id)
+        {
+            Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+            _db.Flavors.Remove(thisFlavor);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

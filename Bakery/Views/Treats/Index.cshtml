@@ -1,5 +1,5 @@
 @{
-  Layout = "_Layout";
+    Layout = "_Layout";
 }
 
 @using Bakery.Models;
@@ -12,12 +12,12 @@
 }
 
 <ul>
-    @foreach(Treat treat in Model)
+    @foreach (Treat treat in Model)
     {
         <li>@Html.ActionLink($"{treat.TreatName}", "Details", new { id = treat.TreatId })</li>
     }
 </ul>
 
 <p>@Html.ActionLink("Add new treat", "Create")</p>
-<p>@Html.ActionLink("Add new Treat", "Create", "Treats")</p>
+
 <p>@Html.ActionLink("Home", "Index", "Home")</p>

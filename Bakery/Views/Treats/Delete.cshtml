@@ -1,0 +1,19 @@
+@{
+    Layout = "_Layout";
+}
+
+@model Bakery.Models.Treat;
+@using System.Collections.Generic;
+
+<h2>Delete a treat</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.TreatName): @Html.DisplayFor(model => model.TreatName)</h3>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+
+<p>@Html.ActionLink("Back to treats", "Index")</p>
+<p>@Html.ActionLink("Edit Treats", "Edit", new { id = Model.TreatId })</p>
+@Html.ActionLink("Back to List", "Index")
