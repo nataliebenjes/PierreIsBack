@@ -42,9 +42,9 @@ namespace Bakery.Controllers
         public ActionResult AddFlavor(int id)
         {
             Treat thisTreat = _db.Treats.FirstOrDefault(recipes => recipes.TreatId == id);
-            ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
+            //check this line
+            ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "FlavorName");
             return View(thisTreat);
-            
         }
         [HttpPost]
         public ActionResult AddFlavor(Treat treat, int flavorId)
