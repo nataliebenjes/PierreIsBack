@@ -22,14 +22,13 @@ project.
 
 ## Complete setup/installation instructions
 - Clone this repository from GitHub
-- Navigate to the HairSalon directory in your terminal and create a new file called appsettings.json
+- Navigate to the Bakery directory in your terminal and create a new file called appsettings.json
 - Within this file add the following lines of code:
 
 ```
 {
 "ConnectionStrings": {
-"DefaultConnection": "Server=localhost;Port=3306;database=natalie_benjes;uid=root;pwd=epicodus;",
-"TestConnection": "Server=localhost;Port=3306;database=natalie_benjes;uid=root;pwd=epicodus;"
+"DefaultConnection": "Server=localhost;Port=3306;database=natalie_benjes;uid=root;pwd=epicodus;"
 }
 }
 ```
