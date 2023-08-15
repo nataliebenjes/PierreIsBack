@@ -41,6 +41,9 @@ namespace Bakery.Controllers
                 IdentityResult result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
                     return RedirectToAction("Index");
                 }
                 else
