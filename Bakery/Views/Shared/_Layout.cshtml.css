@@ -5,21 +5,24 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
-  color: #0077cc;
+  color: #222e36;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
+  background-color: #273746;
   border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
+  color: #da9f9f;
+  background-color: #748ca3;
   border-color: #1861ac;
 }
 
@@ -37,6 +40,8 @@ a {
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .footer {
@@ -47,10 +52,12 @@ button.accept-policy {
   line-height: 60px;
 }
 
-body {
+.centered-containter {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; 
-  margin: 0;
+  justify-content: center; 
+  align-items: flex-start;
+  margin-top: 25vh;
+  height: 100vh; 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 26px;
 }
