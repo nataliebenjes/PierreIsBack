@@ -26,7 +26,7 @@ else
 }
 
 <p>@Html.ActionLink("Back to treat list", "Index")</p>
-<p>@Html.ActionLink("Edit Treats", "Edit", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</p>
 <p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>
 <p>@Html.ActionLink("Add new flavor of this treat", "AddFlavor", new { id = Model.TreatId }) : @Html.DisplayFor(Model =>
     Model.TreatName)</p>

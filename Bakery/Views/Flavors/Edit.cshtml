@@ -5,7 +5,6 @@
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.FlavorId)
-    @Html.HiddenFor(model => model.User.Id)
 
     @Html.LabelFor(model => model.FlavorName)
     @Html.EditorFor(model => model.FlavorName)

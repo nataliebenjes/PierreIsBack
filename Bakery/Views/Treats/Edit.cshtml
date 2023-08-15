@@ -5,7 +5,6 @@
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.TreatId)
-    @Html.HiddenFor(model => model.User.Id)
 
     @Html.LabelFor(model => model.TreatName)
     @Html.EditorFor(model => model.TreatName)
