@@ -34,9 +34,20 @@ namespace Bakery.Controllers
         [HttpPost]
         public ActionResult Create(Treat treat)
         {
-            _db.Treats.Add(treat);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                if (string.IsNullOrWhiteSpace(treat.TreatName))
+                {
+                    ModelState.AddModelError("TreatName", "The Treat Name field is required.");
+                    return View(treat); 
+                }
+
+                _db.Treats.Add(treat);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(treat);
         }
 
         public ActionResult AddFlavor(int id)
