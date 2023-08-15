@@ -41,7 +41,7 @@ namespace Bakery.Controllers
 
         public ActionResult AddFlavor(int id)
         {
-            Treat thisTreat = _db.Treats.FirstOrDefault(recipes => recipes.TreatId == id);
+            Treat thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);
             //check this line
             ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "FlavorName");
             return View(thisTreat);

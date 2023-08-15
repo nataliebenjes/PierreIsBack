@@ -4,27 +4,18 @@
 
 @model Bakery.Models.Flavor
 
-<h2>Add a treat to this Flavor category</h2>
-<div>
-    <h4>Add a treat: @Html.DisplayFor(model => model.FlavorName)</h4>
-    @if (@ViewBag.Flavors.Count == 0)
-    {
-        <p>You must first add Flavors to your database!</p>
-        <p>@Html.ActionLink("Add a flavor", "Create", "Flavors")</p>
-    }
-    else
-    {
-        @using (Html.BeginForm())
-        {
-            @Html.HiddenFor(model => model.FlavorId)
+<h2>Assign a treat to @Html.DisplayFor(model => model.FlavorName)</h2>
 
-            @Html.Label("Select flavor")
-            @Html.DropDownList("FlavorId")
+<br>
 
-            <input type="submit" value="Save" class="btn btn-default" />
-        }
-    }
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.FlavorId)
 
-    <p>@Html.ActionLink("Back to list", "Index")</p>
-    <p>@Html.ActionLink("Add a new flavor", "Create", "Flavors")</p>
-</div>
+    @Html.Label("Select Treat")
+    @Html.DropDownList("TreatId")
+
+    <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Add a Treat", "Create", "Treats")</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>

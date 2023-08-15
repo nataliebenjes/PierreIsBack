@@ -1,4 +1,4 @@
-# ** **Dr. Sillystringz's Factory**
+# ** **Pierre's bakery**
 
 ### By Natalie Benjes
 
@@ -33,9 +33,7 @@ project.
 }
 ```
 
-- Open MySQL Workbench and use data import/restore to add the database to your system.
-- This will allow you to use the bakery.sql file.
-- Once this has been set up, navigate to the Bakery directory and run ```$ dotnet watch run```
+- Once this has been set up, navigate to the Bakery directory and run ```dotnet ef database update``` & ```dotnet watch run```
 
 
 ## Known Bugs

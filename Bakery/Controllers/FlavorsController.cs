@@ -9,8 +9,6 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 
 
-
-
 namespace Bakery.Controllers
 {
     [Authorize]
